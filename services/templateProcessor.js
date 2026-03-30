@@ -8,11 +8,11 @@ function fillTemplate(templatePath, outputPath, data){
     let contentXml = zip.readAsText("content.xml");
     //Replace placeholders
     Object.keys(data).forEach((key) => {
-    const regex = new RegExp(`{{${key}}`, "g");
+    const regex = new RegExp(`{{${key}}}`, "g"); 
     contentXml = contentXml.replace(regex, data[key]);
     });
     //Update file inside zip
-    zip.uppdateFile("content.xml", Buffer.from(contentXml, "utf-8"));
+    zip.updateFile("content.xml", Buffer.from(contentXml, "utf-8"));
     //Save new document
     zip.writeZip(outputPath);
 }
